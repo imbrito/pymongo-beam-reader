@@ -5,6 +5,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongo-beam
     restart: always
     ports:
       - 27017:27017
@@ -14,6 +15,7 @@ services:
 
   mongo-express:
     image: mongo-express
+    container_name: mongo-express-beam
     restart: always
     ports:
       - 8081:8081

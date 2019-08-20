@@ -21,6 +21,12 @@ If you like, you can test it out with these commands:
     $ python beam_example.py
 ```
 
+## Access MongoDB
+
+- CLI: `$ docker exec -it mongo-beam mongo -u root -p example`.
+
+- Your browser, by Mongo Express: `localhost:8081`.
+
 ## MonogoDB Document
 
 ```JSON
