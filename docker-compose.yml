@@ -3,32 +3,72 @@ version: '3'
 
 services:
 
-  mongo:
+  mongo-one:
     image: mongo
-    container_name: mongo-beam
-    restart: always
+    hostname: mongo-one
+    container_name: mongo-one
+    expose:
+      - 27017
     ports:
       - 27017:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     networks: 
-      - mongo-beam-network
+      - mongo-network
 
+  mongo-two:
+    image: mongo
+    hostname: mongo-two
+    container_name: mongo-two
+    expose:
+      - 27017
+    ports:
+      - 27018:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks: 
+      - mongo-network
+  
+  mongo-three:
+    image: mongo
+    hostname: mongo-three
+    container_name: mongo-three
+    expose:
+      - 27017
+    ports:
+      - 27019:27017
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks: 
+      - mongo-network
+  
   mongo-express:
     image: mongo-express
-    container_name: mongo-express-beam
+    container_name: mongo-express
     restart: always
     ports:
       - 8081:8081
     environment:
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_SERVER: mongo-one
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
     depends_on:
-      - mongo
+      - mongo-one
+      - mongo-two
+      - mongo-three
     networks: 
-      - mongo-beam-network
+      - mongo-network
 
 networks: 
-  mongo-beam-network:
+  mongo-network:
     driver: bridge
