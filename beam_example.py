@@ -9,9 +9,9 @@ If you like, you can test it out with these commands:
     $ python beam_example.py
 """
 import logging
-
 import apache_beam as beam
 from bson.json_util import dumps
+from change_streams.settings import URI
 
 
 def transform(document):
@@ -19,8 +19,8 @@ def transform(document):
 
 
 def run():
-    logging.basicConfig(level=logging.DEBUG)
-    connection_string = 'mongodb://root:example@127.0.0.1:27017'
+    logging.basicConfig(level=logging.INFO)
+    connection_string = URI
 
     with beam.Pipeline(runner='DirectRunner') as pipeline:
         (pipeline
