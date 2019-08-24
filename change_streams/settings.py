@@ -2,6 +2,6 @@
 # -*- coding: utf-8 -*-
 from pymongo import MongoClient
 
-URI = "mongodb://root:example@127.0.0.1:27017"
+URI = "mongodb://mongo-one:27017,mongo-two:27017,mongo-three:27017/?replicaSet=beam"
 
 client = MongoClient(URI)
