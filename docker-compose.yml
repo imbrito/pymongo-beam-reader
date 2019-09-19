@@ -11,7 +11,7 @@ services:
       - 27017
     ports:
       - 27017:27017
-    restart: always
+    # restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -27,7 +27,7 @@ services:
       - 27017
     ports:
       - 27018:27017
-    restart: always
+    # restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -43,7 +43,7 @@ services:
       - 27017
     ports:
       - 27019:27017
-    restart: always
+    # restart: always
     entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "beam" ]
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
