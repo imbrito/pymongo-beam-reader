@@ -39,7 +39,7 @@ python-dateutil==2.8.0
 pytz==2019.2
 PyYAML==3.13
 requests==2.22.0
-rsa==4.0
+rsa==4.7
 six==1.12.0
 text-unidecode==1.2
 traitlets==4.3.2
