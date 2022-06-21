@@ -19,7 +19,7 @@ ipython==7.7.0
 ipython-genutils==0.2.0
 jedi==0.15.1
 mock==2.0.0
-numpy==1.17.0
+numpy==1.22.0
 oauth2client==3.0.0
 parso==0.5.1
 pbr==5.4.2
